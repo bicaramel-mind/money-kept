@@ -1,1 +1,34 @@
-const $=i=>document.getElementById(i),d=$("dlg");let s=localStorage.s,c=localStorage.c||"S$",h=+localStorage.h||0;if(!s)d.showModal();$("settings").onclick=()=>d.showModal();$("save").onclick=()=>{localStorage.s=s=$("start").value;localStorage.h=h=+$("hourly").value;localStorage.c=c=$("cur").value;d.close()};function fmt(v){return c+v.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}function tick(){if(!s||!h)return;let now=Date.now(),st=new Date(s).getTime(),hrs=(now-st)/36e5,total=hrs*h;$("money").textContent=fmt(total);$("rate").textContent="▲ +"+fmt(h)+"/hour";let days=Math.floor(hrs/24),rh=Math.floor(hrs%24),m=Math.floor((hrs*60)%60);$("time").textContent=`${days}d ${rh}h ${m}m`;let td=((now-new Date().setHours(0,0,0,0))/36e5)*h;$("today").textContent=fmt(td);$("week").textContent=fmt(h*24*7);$("month").textContent=fmt(h*24*30);let ms=[1000,2500,5000,10000,25000,50000],next=ms.find(x=>x>total)||ms.at(-1);$("milestone").textContent=`${fmt(total)} / ${fmt(next)}`;$("fill").style.width=Math.min(total/next*100,100)+"%";requestAnimationFrame(tick)}requestAnimationFrame(tick);
+const $=i=>document.getElementById(i),d=$("dlg");
+
+let s = "2026-07-16T00:00"
+let c = "S$";
+let h = 29.99
+
+if(!s)d.showModal();
+$("settings").onclick=()=>d.showModal();
+$("save").onclick=()=>{localStorage.s=s=$("start").value;
+                       localStorage.h=h=+$("hourly").value;
+                       localStorage.c=c=$("cur").value;d.close()};
+function fmt(v){
+  return c+v.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})
+}
+
+function tick(){
+  if(!s||!h)return;
+  
+  let now=Date.now(),st=new Date(s).getTime(),hrs=(now-st)/36e5,total=hrs*h;
+  
+  $("money").textContent=fmt(total);
+  $("rate").textContent="▲ +"+fmt(h)+"/hour";
+  let days=Math.floor(hrs/24),rh=Math.floor(hrs%24),m=Math.floor((hrs*60)%60);
+  $("time").textContent=`${days}d ${rh}h ${m}m`;
+  let td=((now-new Date().setHours(0,0,0,0))/36e5)*h;
+  $("today").textContent=fmt(td);
+  $("week").textContent=fmt(h*24*7);
+  $("month").textContent=fmt(h*24*30);
+  let ms=[1000,2500,5000,10000,25000,50000],next=ms.find(x=>x>total)||ms.at(-1);
+  $("milestone").textContent=`${fmt(total)} / ${fmt(next)}`;
+  $("fill").style.width=Math.min(total/next*100,100)+"%";requestAnimationFrame(tick)
+}
+
+requestAnimationFrame(tick);
