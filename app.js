@@ -4,17 +4,11 @@ let s = "2026-07-16T00:00"
 let c = "S$";
 let h = 29.99
 
-if(!s)d.showModal();
-$("settings").onclick=()=>d.showModal();
-$("save").onclick=()=>{localStorage.s=s=$("start").value;
-                       localStorage.h=h=+$("hourly").value;
-                       localStorage.c=c=$("cur").value;d.close()};
 function fmt(v){
   return c+v.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})
 }
 
 function tick(){
-  if(!s||!h)return;
   
   let now=Date.now(),st=new Date(s).getTime(),hrs=(now-st)/36e5,total=hrs*h;
   
