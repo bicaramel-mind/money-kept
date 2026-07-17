@@ -1,1 +1,50 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Money Kept</title><link rel="stylesheet" href="styles.css"></head><body><div class="bg"></div><main class="wrap"><h3>Recovery Fund</h3><div class="hero glass"><div class="label">Current Value</div><div id="money" class="money">S$0.00</div><div id="rate"></div></div><div class="grid"><div class="glass"><div class="label">Recovery Time</div><div id="time"></div></div><div class="glass"><div class="label">Today</div><div id="today"></div></div><div class="glass"><div class="label">This Week</div><div id="week"></div></div><div class="glass"><div class="label">This Month</div><div id="month"></div></div></div><div class="glass"><div class="label">Next Milestone</div><div class="bar"><div id="fill"></div></div><div id="milestone"></div></div><button id="settings">⚙ Settings</button></main><dialog id="dlg"><h2>Settings</h2><input id="start" type="datetime-local"><input id="hourly" type="number" step="0.01" placeholder="Hourly loss"><input id="cur" placeholder="Currency" value="S$"><button id="save">Save</button></dialog><script src="app.js"></script></body></html>
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Money Kept</title><link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="bg"></div>
+    <main class="wrap">
+      <div class="hero glass">
+        <div class="label">Current Value</div>
+        <div id="money" class="money">S$0.00</div>
+        <div id="rate"></div></div>
+      <div class="grid">
+        <div class="glass">
+          <div class="label">Recovery Time</div>
+          <div id="time"></div>
+        </div>
+        <div class="glass">
+          <div class="label">Today</div>
+          <div id="today"></div>
+        </div>
+        <div class="glass">
+          <div class="label">This Week</div>
+          <div id="week"></div>
+        </div>
+        <div class="glass">
+          <div class="label">This Month</div>
+          <div id="month"></div>
+        </div>
+      </div>
+      <div class="glass">
+        <div class="label">Next Milestone</div>
+        <div class="bar">
+          <div id="fill"></div>
+        </div>
+        <div id="milestone"></div>
+      </div>
+      <button id="settings">⚙ Settings</button>
+    </main>
+    <dialog id="dlg">
+      <h2>Settings</h2>
+      <input id="start" type="datetime-local">
+      <input id="hourly" type="number" step="0.01" placeholder="Hourly loss">
+      <input id="cur" placeholder="Currency" value="S$">
+      <button id="save">Save</button>
+    </dialog>
+    <script src="app.js"></script>
+  </body>
+</html>
